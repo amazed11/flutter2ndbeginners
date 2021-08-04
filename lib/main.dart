@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstapp/screen/work_details_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,8 +23,32 @@ class HomeScreen extends StatelessWidget {
 
   List<String> course = ["SLC", "+2", "Bachelors", "Masters"];
   List<String> instname = [
-    "Prativa Higher Secondary School",
+    "Pratibha Higher Secondary School",
     "Soch College of IT",
+  ];
+  List<String> interest = [
+    'Exploring Internet',
+    'travelling',
+    'singing',
+    'dancing',
+    'Research',
+    'Programming',
+    'Designing',
+    'Machine Learning',
+    'Javascript'
+  ];
+
+  List<String> work = [
+    'Software Development',
+    'Mobile App Development',
+    'Web Developement',
+    'Designing and Branding'
+  ];
+  List<String> desc = [
+    'Build your software at your cost',
+    'Make everything on your hand',
+    'Public your zone in internet',
+    'Try something new eye catching design with brand'
   ];
 
   @override
@@ -135,6 +160,98 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.15,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Interests",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                      Wrap(
+                        runSpacing: 10.0,
+                        spacing: 10.0,
+                        children: List.generate(
+                          interest.length,
+                          (index) => Chip(
+                            avatar: CircleAvatar(
+                              backgroundColor: Colors.deepOrangeAccent,
+                              child:
+                                  Text("${(interest[index][0]).toUpperCase()}"),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                            ),
+                            backgroundColor: Colors.indigo,
+                            label: Text("${(interest[index]).toUpperCase()}"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.20,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Work Showcase",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: work.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card(
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => WorkDetailsScreen()));
+                              },
+                              title: Text("${work[index]}"),
+                              subtitle: Text(
+                                "${desc[index]}",
+                              ),
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    "https://eversoft.company/wp-content/uploads/2021/03/Software-Development-Company-Eversoft-hero-baner.png"),
+                              ),
+                              trailing: IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.call),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               )
             ],
