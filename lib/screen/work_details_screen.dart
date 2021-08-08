@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class WorkDetailsScreen extends StatelessWidget {
-  const WorkDetailsScreen({Key? key}) : super(key: key);
+  WorkDetailsScreen({Key? key, this.work, this.desc}) : super(key: key);
 
+  final String? work;
+  final String? desc;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +12,15 @@ class WorkDetailsScreen extends StatelessWidget {
         title: Text("Details"),
       ),
       body: Container(
-        child: Text("data"),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("$work"),
+              Text("$desc"),
+            ],
+          ),
+        ),
       ),
     );
   }

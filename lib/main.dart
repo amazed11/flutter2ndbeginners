@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstapp/screen/grid_view_demo.dart';
 import 'package:myfirstapp/screen/work_details_screen.dart';
 
 void main() {
@@ -55,7 +56,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: Text("My first CV App"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => GridViewDemoScreen()));
+            },
+            icon: Icon(Icons.grid_goldenratio),
+          ),
+        ],
         centerTitle: true,
       ),
       body: Container(
@@ -231,17 +242,23 @@ class HomeScreen extends StatelessWidget {
                           return Card(
                             child: ListTile(
                               onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => WorkDetailsScreen()));
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => WorkDetailsScreen(
+                                      work: work[index],
+                                      desc: desc[index],
+                                    ),
+                                  ),
+                                );
                               },
                               title: Text("${work[index]}"),
                               subtitle: Text(
                                 "${desc[index]}",
                               ),
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    "https://eversoft.company/wp-content/uploads/2021/03/Software-Development-Company-Eversoft-hero-baner.png"),
-                              ),
+                              // leading: CircleAvatar(
+                              //   backgroundImage: NetworkImage(
+                              //       "https://eversoft.company/wp-content/uploads/2021/03/Software-Development-Company-Eversoft-hero-baner.png"),
+                              // ),
                               trailing: IconButton(
                                 onPressed: () {},
                                 icon: Icon(Icons.call),
