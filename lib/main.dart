@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfirstapp/screen/grid_view_demo.dart';
 import 'package:myfirstapp/screen/login_screen.dart';
+import 'package:myfirstapp/screen/product_screen.dart';
 import 'package:myfirstapp/screen/splash_screen.dart';
 import 'package:myfirstapp/screen/work_details_screen.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "My First App",
-      home: LoginScreen(),
+      home: ProductScreen(),
     );
   }
 }
